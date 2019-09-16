@@ -1,0 +1,39 @@
+{
+  "parser": "babel-eslint",
+  "plugins": ["import"],
+  "parserOptions": {
+    "ecmaFeatures": {
+      "modules": true
+    }
+  },
+  "extends": [
+    "eslint:recommended",
+    "airbnb-base",
+    "plugin:prettier/recommended"
+  ],
+  "env": {
+    "jest": true
+  },
+  "rules": {
+    "import/prefer-default-export": 1,
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": ["regenerator-runtime/**"]
+      }
+    ],
+    "no-underscore-dangle": [
+      "error",
+      {
+        "allow": ["_sort", "_order", "_page", "_limit"]
+      }
+    ],
+    "no-console": [
+      "warn",
+      {
+        "allow": ["info", "warn", "error"]
+      }
+    ]
+  },
+  "globals": {}
+}
