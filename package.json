@@ -4,18 +4,45 @@
   "main": "index.js",
   "scripts": {
     "start": "babel-node index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "eslint": "eslint --fix",
+    "prettier": "prettier",
+    "fmt": "prettier --config .prettierrc.yml --write \"{!(node_modules),!(__mock__)/**/}*.{jsx,js,json,md,ts}\""
   },
   "author": "",
   "license": "ISC",
   "description": "",
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{jsx,js}": [
+      "eslint --fix",
+      "git add"
+    ],
+    "*.{jsx,js,json,md,ts}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
   "dependencies": {
     "@octokit/rest": "^16.28.9",
     "dotenv": "^8.1.0"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
+    "babel-eslint": "^10.0.3",
     "babel-preset-env": "^1.7.0",
-    "braces": ">=2.3.1"
+    "braces": ">=2.3.1",
+    "eslint": "^6.1.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-config-prettier": "^6.3.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-prettier": "^3.1.0",
+    "husky": "^3.0.5",
+    "lint-staged": "^9.2.5",
+    "prettier": "^1.18.2"
   }
 }
